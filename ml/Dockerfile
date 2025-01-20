@@ -8,6 +8,10 @@ WORKDIR /app
 COPY model.py ./
 COPY requirements.txt ./
 
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install mc
+
 # Устанавливаем зависимости
 RUN pip install -r requirements.txt
 

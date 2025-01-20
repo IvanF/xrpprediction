@@ -8,6 +8,10 @@ WORKDIR /app
 COPY package*.json ./
 COPY app.js ./
 
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install mc
+
 # Устанавливаем зависимости
 RUN npm install
 

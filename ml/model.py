@@ -147,7 +147,7 @@ def train_model(data):
     model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
 
     # Обучение модели
-    model.fit(X, y, epochs=20, batch_size=32, validation_split=0.2)
+    model.fit(X, y, epochs=10, batch_size=2, validation_split=0.2)
 
     # Сохранение модели
     model.save('model.h5')
@@ -199,14 +199,17 @@ def predict():
         # Рассчитываем, насколько цена близка к уровню сопротивления или поддержки
         distance_to_support = (last_price - support.iloc[-1]) / support.iloc[-1] * 100
         distance_to_resistance = (resistance.iloc[-1] - last_price) / resistance.iloc[-1] * 100
+        current_price = df['close'].iloc[-1]
 
         return jsonify({
+
             "prediction": float(prediction[0][0]),
             "trend": trend,
             "distance_to_support": distance_to_support,
             "distance_to_resistance": distance_to_resistance,
             "support_price": float(support.iloc[-1]),
-            "resistance_price": float(resistance.iloc[-1])
+            "resistance_price": float(resistance.iloc[-1]),
+            "current_price": current_price
         })
     except Exception as e:
         return jsonify({"error": str(e)})
