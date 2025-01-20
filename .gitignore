@@ -1,0 +1,9 @@
+db_dumps
+/node_modules/
+.idea/
+.env
+assets/pictures/cache/*.png
+!assets/pictures/cache/
+assets/pictures/cache/.gitkeep
+.gitkeep
+
