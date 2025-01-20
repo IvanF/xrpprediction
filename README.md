@@ -2,7 +2,7 @@ Example check https://api.bybit.com/v5/market/kline?category=linear&symbol=XRPUS
 
 Howto use this code:
 
-# docker compose -f ./docker-compose.yml up --build
+docker compose -f ./docker-compose.yml up --build
 
 wait
 
